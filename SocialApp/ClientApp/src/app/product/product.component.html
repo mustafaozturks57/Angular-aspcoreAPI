@@ -1,0 +1,62 @@
+
+
+<app-navbar></app-navbar>
+
+
+
+
+<!--<h3 class="bg-primary text-white p2">{{CategoryName}} Kategorisi</h3>  eski tanımlama -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-7">
+<br>
+<br>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th></th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+
+
+
+
+
+    <tr *ngFor="let p of products" [class.bg-warning]="p.isActive==false"><!-- let ile foreach dönügüsüne giriyor ts dosyasında bulunan verileri çekiyorum -->
+      <!-- [class.bg-warning]="p.IsActive==false"  her döndüğü satırda IsActıve e bakıyor kosul saglanıyor ıse durumu yerine getiriyor class atıyor  -->
+      <td>{{p.productID}}</td>
+
+      <td>{{p.names}}</td>
+      <td>{{p.price}}</td>
+      <td>
+        <button class="btn btn-primary" (click)="onselectedProduct(p)">Edit</button>
+        <!--burada methodun içerisine dönen p degerini yolluyoruz onselectedProduct(p)-->
+        <button class="btn btn-danger">Delete</button>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+
+</div>
+</div>
+<div class="col-md-5">
+  <app-product-form [products]="products"></app-product-form>
+  <app-product-details    [products]="selectedProduct"></app-product-details>
+  <!--burada dönen değeri selectprodcut burada belirliyorum [product] diye bahsedilen eleman da TS de bulunan @Input product dan gelmedir -->
+</div>
+</div>
+
+
+
+
+
+

@@ -1,0 +1,23 @@
+<div *ngIf="products"  ><!--Güncellenicek bilgiler var ise burada getir diyoruz-->
+<input type="hidden" #productID name="productID"   [value]="products.productID" >
+  <div class="form-group">
+
+    <label for="name"> name</label>
+    <input [value]="products.names" #names type="text" class="form-control" name="names">
+
+  </div >
+  <div class="form-group">
+
+    <label for="price"> price</label>
+    <input [value]="products.price" #price type="number" class="form-control" name="price">
+
+  </div>
+  <div class="form-group">
+
+
+    <input [checked]="products.isActive==true"   #isactive type="checkbox" class="form-checbox" name="isActive" id="isActive">
+    <label  for="isactive"  >Aktif Durumu</label>
+
+  </div>
+<button class="btn btn-primary" (click)="addProduct(productID.value,names.value,price.value,isactive.checked);names.value=''; price.value='';isactive.checked=false  " >Update Product</button>
+</div>
